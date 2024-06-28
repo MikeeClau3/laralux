@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +18,13 @@ use App\Http\Controllers\HotelController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::resource('hotels', HotelController::class);
+Route::resource('members', MemberController::class);
+Route::resource('products', ProductController::class);
+Route::resource('transactions', TransactionController::class);
+
+
